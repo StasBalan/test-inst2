@@ -11,11 +11,11 @@ const URL_PARAMS = {
 }
 
 const loginBtn = document.getElementById('myBtn');
-console.log(loginBtn);
+// console.log(loginBtn);
 loginBtn.addEventListener('click', authInInst);
 
 function authInInst() {
     const formatedUrlParams = Object.entries(URL_PARAMS).reduce((res, [key, value], index) => !index ? res + `${key}=${value}` : res + `&${key}=${value}`, '')
-    console.log('authInInst', API_BASE_URL + AUTH_URL + '?' + formatedUrlParams);
+    // console.log('authInInst', API_BASE_URL + AUTH_URL + '?' + formatedUrlParams);
     window.location = API_BASE_URL + AUTH_URL + '?' + formatedUrlParams;
 }
