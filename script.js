@@ -20,7 +20,7 @@ function authInInst() {
 
 function getCode() {
     const urlParams = new URLSearchParams(window.location.search);
-    console.log('code', urlParams.get('code'));
+    console.log('code22', urlParams.get('code'));
     return urlParams.get('code');
 }
 
