@@ -1,6 +1,6 @@
 const INSTAGRAM_APP_ID = '325387826763751';
 const INSTAGRAM_APP_SECRET = '7ea2dfc985180e49999d746c46f81df7';
-const INSTAGRAM_APP_REDIRECT_URI = 'https://www.google.nl/';
+const INSTAGRAM_APP_REDIRECT_URI = 'https://stasbalan.github.io/test-inst2/';
 const API_BASE_URL = 'https://api.instagram.com/';
 const AUTH_URL = 'oauth/authorize';
 const URL_PARAMS = {
