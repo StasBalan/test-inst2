@@ -25,7 +25,7 @@ function getCode() {
 }
 
 async function sendAuthReq() {
-    const response = await fetch(`${API_BASE_URL}/oauth/access_token`, {
+    const response = await fetch(`${API_BASE_URL}oauth/access_token`, {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
         headers: {
             "Content-Type": "application/json",
