@@ -25,11 +25,10 @@ function getCode() {
 }
 
 async function sendAuthReq() {
-    const response = await fetch('https://api.instagram.com/oauth/access_token', {
+    const response = await fetch(`${API_BASE_URL}/oauth/access_token`, {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
         headers: {
             "Content-Type": "application/json",
-            "Accept": "application/json",
         },
         body: JSON.stringify({
             client_id: INSTAGRAM_APP_ID,
