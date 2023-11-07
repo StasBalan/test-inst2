@@ -29,6 +29,7 @@ async function sendAuthReq() {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
         headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*"
         },
         body: JSON.stringify({
             client_id: INSTAGRAM_APP_ID,
