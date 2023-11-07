@@ -4,18 +4,54 @@ const INSTAGRAM_APP_REDIRECT_URI = 'https://stasbalan.github.io/test-inst2/';
 const API_BASE_URL = 'https://api.instagram.com/';
 const AUTH_URL = 'oauth/authorize';
 const URL_PARAMS = {
-    app_id: INSTAGRAM_APP_ID,
+    client_id: INSTAGRAM_APP_ID,
     redirect_uri: INSTAGRAM_APP_REDIRECT_URI,
     scope: 'user_profile,user_media',
     response_type: 'code'
 }
+const LOGIN_BTN = document.getElementById('myBtn');
 
-const loginBtn = document.getElementById('myBtn');
-// console.log(loginBtn);
-loginBtn.addEventListener('click', authInInst);
+LOGIN_BTN.addEventListener('click', authInInst);
 
 function authInInst() {
     const formatedUrlParams = Object.entries(URL_PARAMS).reduce((res, [key, value], index) => !index ? res + `${key}=${value}` : res + `&${key}=${value}`, '')
-    // console.log('authInInst', API_BASE_URL + AUTH_URL + '?' + formatedUrlParams);
     window.location = API_BASE_URL + AUTH_URL + '?' + formatedUrlParams;
 }
+
+function getCode() {
+    const urlParams = new URLSearchParams(window.location.search);
+    console.log('code', urlParams.get('code'));
+    return urlParams.get('code');
+}
+
+async function sendAuthReq() {
+    const response = await fetch('https://api.instagram.com/oauth/access_token', {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        },
+        body: JSON.stringify({
+            client_id: INSTAGRAM_APP_ID,
+            client_secret: INSTAGRAM_APP_SECRET,
+            code: getCode(),
+            grant_type: 'authorization_code',
+            redirect_uri: INSTAGRAM_APP_REDIRECT_URI,
+        }), // body data type must match "Content-Type" header
+    });
+
+    const data = response.json();
+    console.log('data', data)
+}
+
+function init() {
+    if (getCode()) {
+        console.log('IF');
+        sendAuthReq();
+    } else {
+        console.log('else');
+    }
+}
+
+
+init();
